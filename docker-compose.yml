@@ -1,0 +1,67 @@
+version: "3"
+
+services:
+  stchaind-node0:
+    container_name: nexus-node0
+    image: "nexusd/nexus-node"
+    ports:
+      - "26656-26657:26656-26657"
+      - "1317:1317"
+    environment:
+      - ID=0
+      - LOG=${LOG:-stchaind.log}
+    volumes:
+      - ./build:/stchaind:Z
+    networks:
+      localnet:
+        ipv4_address: 192.168.11.2
+
+  stchaind-node1:
+    container_name: nexus-node1
+    image: "nexusd/nexus-node"
+    ports:
+      - "26659-26660:26656-26657"
+    environment:
+      - ID=1
+      - LOG=${LOG:-nexus.log}
+    volumes:
+      - ./build:/stchaind:Z
+    networks:
+      localnet:
+        ipv4_address: 192.168.11.3
+
+  stchaind-node2:
+    container_name: nexus-node2
+    image: "nexusd/nexus-node"
+    environment:
+      - ID=2
+      - LOG=${LOG:-nexusd.log}
+    ports:
+      - "26661-26662:26656-26657"
+    volumes:
+      - ./build:/nexusd:Z
+    networks:
+      localnet:
+        ipv4_address: 192.168.11.4
+
+  stchaind-node3:
+    container_name: nexusd-node3
+    image: "nexusd/nexus-node"
+    environment:
+      - ID=3
+      - LOG=${LOG:-stchaind.log}
+    ports:
+      - "26663-26664:26656-26657"
+    volumes:
+      - ./build:/nexusd:Z
+    networks:
+      localnet:
+        ipv4_address: 192.168.11.5
+
+networks:
+  localnet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.11.0/16

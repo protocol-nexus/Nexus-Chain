@@ -1,0 +1,15 @@
+version: 1
+accounts:
+  - name: user1
+    coins: ["8888888888888nxs"]
+  - name: user2
+    coins: ["500nxs"]
+validator:
+  name: user1
+  staked: "10000000nxs"
+faucet:
+  name: user1
+  coins: ["999999999999nxs"]
+  coins_max: ["2000nxs"]
+  host: 0.0.0.0
+  port: 54321
