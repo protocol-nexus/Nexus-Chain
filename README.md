@@ -35,9 +35,9 @@ The CLI is under development and we are targeting the following featuresets
 - [x] Collect genesis txs and output a genesis.json file
 - [x] Migrate genesis to a specified target version
 - [ ] Generate a genesis tx carrying a self delegation
-- [ ]validates the genesis file at the default location or at the location passed as an arg
+- [ ] Validates the genesis file at the default location or at the location passed as an arg
 - [ ] Add a genesis account to genesis.json
-- [ ] Run a faucet cmd
+- [ ] Run a faucet
 
 ## Contribution
 
